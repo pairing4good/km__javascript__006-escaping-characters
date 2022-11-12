@@ -37,45 +37,43 @@ afterEach(async () => {
   await browser.close();
 });
 
-describe("the index.js file", () => {
-  it("should define a string variable named firstName", async () => {
-    const firstName = await page.evaluate(() => firstName);
-    expect(firstName).toBeDefined();
+describe('the index.js file', () => {
+  it('should define a string variable named introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
+    expect(introduction).toBeDefined();
   });
-
-  it("should define a string variable named jobTitle", async () => {
-    const jobTitle = await page.evaluate(() => jobTitle);
-    expect(jobTitle).toBeDefined();
+  
+  it('should include a new line within introduction should include a tab within introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
+    expect(introduction).toContain('\n')
   });
-
-  it("should define a string variable named city", async () => {
-    const city = await page.evaluate(() => city);
-    expect(city).toBeDefined();
+  
+  it('should include a tab within introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
+    expect(introduction).toContain('\t')
   });
-
-  it("should define a string template named newJobPost that contains firstName", async () => {
-    const newJobPost = await page.evaluate(() => newJobPost);
-    const firstName = await page.evaluate(() => firstName);
-    expect(newJobPost).toContain(firstName);
+  
+  it('should include a single quote within introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
+    expect(introduction).toContain('\'')
   });
-
-  it("should define a string template named newJobPost that contains jobTitle", async () => {
-    const newJobPost = await page.evaluate(() => newJobPost);
-    const jobTitle = await page.evaluate(() => jobTitle);
-    expect(newJobPost).toContain(jobTitle);
+  
+  it('should include a double quote within introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
+    expect(introduction).toContain('\"')
   });
-
-  it("should define a string template named newJobPost that contains city", async () => {
-    const newJobPost = await page.evaluate(() => newJobPost);
-    const city = await page.evaluate(() => city);
-    expect(newJobPost).toContain(city);
+  
+  it('should include a backslash within introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
+    expect(introduction).toContain('\\')
   });
-
-  it("should assign the innerHTML of the HTML element with the id result to the newJobPost", async () => {
-    const newJobPost = await page.evaluate(() => newJobPost);
+  
+  it('should assign the innerHTML of the HTML element with the id result to the introduction', async () => {
+    const introduction = await page.evaluate(() => introduction);
     const innerHtml = await page.$eval("#result", (result) => {
-      return result.innerHTML.trim();
+      return result.innerHTML;
     });
-    expect(innerHtml).toBe(newJobPost);
+    
+    expect(innerHtml).toBe(introduction);
   });
 });
